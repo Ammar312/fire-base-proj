@@ -1,0 +1,27 @@
+.popup {
+  display: none;
+  width: 20%;
+  height: 4%;
+  background: rgb(230, 227, 227);
+  box-shadow: 5px 5px 25px rgba(94, 92, 92, 0.205);
+  padding: 1em;
+  position: absolute;
+  left: 40%;
+  top: 4%;
+}
+.auth {
+  display: flex;
+  gap: 0.4em;
+}
+.signUpForm {
+  display: none;
+  flex-direction: column;
+  gap: 0.5em;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  border: 1px solid black;
+  width: 21em;
+  height: 10em;
+  background: rgb(233, 233, 233);
+}

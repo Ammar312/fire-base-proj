@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="auth">
+      <button class="signUp" id="signUp">SignUp</button>
+      <form class="signUpForm">
+        <label for="signUpEmail">Email</label>
+        <input type="email" name="signUpEmail" id="signUpEmail" />
+        <label for="signUpPassword">Password</label>
+        <input
+          type="password"
+          name="signUpPassword"
+          id="signUpPassword"
+          minlength="6"
+        />
+        <input type="submit" value="Submit" />
+      </form>
+      <button class="logIn" id="logIn">LogIn</button>
+    </section>
+
+    <h1>ToDo + FireBase</h1>
+    <form id="form" class="form">
+      <input
+        type="text"
+        placeholder="Enter todo"
+        id="formValue"
+        class="formValue"
+      /><input type="submit" value="Add" id="formBtn" class="formBtn" />
+    </form>
+    <section id="todoList" class="todoList"></section>
+    <div class="popup">
+      <form id="popup">
+        <input type="text" name="edit" id="popupEditInput" />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
