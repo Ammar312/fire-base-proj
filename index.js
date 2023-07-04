@@ -1,5 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import {
   getFirestore,
   collection,
   addDoc,
@@ -19,13 +24,62 @@ const firebaseConfig = {
   messagingSenderId: "734728706649",
   appId: "1:734728706649:web:5c28e4ba34b257cd22ef48",
 };
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth(app);
+
 const signUp = document.querySelector("#signUp");
 signUp.addEventListener("click", () => {
   document.querySelector(".signUpForm").style.display = "flex";
 });
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const signUpForm = document.querySelector(".signUpForm");
+signUpForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const signUpEmail = document.querySelector("#signUpEmail").value;
+  const signUpPassword = document.querySelector("#signUpPassword").value;
+  const auth = getAuth();
+  createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
+      document.querySelector(".signUpForm").style.display = "none";
+      e.target.reset();
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(error);
+      // ..
+    });
+});
+const signIn = document.querySelector("#signIn");
+signIn.addEventListener("click", () => {
+  document.querySelector(".signInForm").style.display = "flex";
+});
+const signInForm = document.querySelector(".signInForm");
+signInForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const signInEmail = document.querySelector("#signInEmail").value;
+  const signInPassword = document.querySelector("#signInPassword").value;
+  const auth = getAuth();
+  signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
+      document.querySelector(".signInForm").style.display = "none";
+      e.target.reset();
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(error);
+      // ..
+    });
+});
 
 const form = document.querySelector("#form");
 const todoList = document.querySelector("#todoList");
